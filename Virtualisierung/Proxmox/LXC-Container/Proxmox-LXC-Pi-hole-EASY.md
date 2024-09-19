@@ -2,7 +2,7 @@
 title: Proxmox-LXC-Pi-hole-EASY
 description: 
 published: true
-date: 2024-09-19T23:10:45.385Z
+date: 2024-09-19T23:11:22.055Z
 tags: 
 editor: markdown
 dateCreated: 2024-09-19T23:10:45.385Z
@@ -18,8 +18,9 @@ In diesem Tutorial lernst du, wie du PiHole in einem LXC Container auf einem Pro
 2. Gehe zu **local storage** unter deiner Proxmox Node.
 3. Wähle den Reiter **CT Templates** und lade das Debian 12 Template herunter.
 
-![screenshot_2024-09-19_190901.png](/proxmox/lxc/screenshot_2024-09-19_190901.png){.align-left}
-![screenshot_2024-09-19_190959.png](/proxmox/lxc/screenshot_2024-09-19_190959.png){.align-left}
+![screenshot_2024-09-19_190901.png](/proxmox/lxc/screenshot_2024-09-19_190901.png)
+
+![screenshot_2024-09-19_190959.png](/proxmox/lxc/screenshot_2024-09-19_190959.png)
 
 ## Schritt 2: Erstellen des LXC Containers
 
