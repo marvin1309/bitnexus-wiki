@@ -2,7 +2,7 @@
 title: Proxmox-LXC-Pi-hole-EASY
 description: 
 published: true
-date: 2024-09-19T23:11:22.055Z
+date: 2024-09-19T23:11:40.104Z
 tags: 
 editor: markdown
 dateCreated: 2024-09-19T23:10:45.385Z
