@@ -2,7 +2,7 @@
 title: User-SSH-Keys
 description: 
 published: true
-date: 2024-09-20T08:41:07.432Z
+date: 2024-09-20T13:13:58.550Z
 tags: 
 editor: markdown
 dateCreated: 2024-09-20T08:10:27.394Z
@@ -68,6 +68,8 @@ Now your user `admin` can run `sudo` commands without entering a password each t
 ### 2. **Generate an SSH Key**
 
 SSH keys provide a more secure way to log in to an SSH session compared to using passwords. To generate an SSH key, use the following command:
+
+Execute this Command on your Client. Use a Linux Distro with Windows-WSL ( tutorial soon )
 
 
 ```bash
