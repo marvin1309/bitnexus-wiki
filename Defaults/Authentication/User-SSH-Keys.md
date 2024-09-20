@@ -2,7 +2,7 @@
 title: User-SSH-Keys
 description: 
 published: true
-date: 2024-09-20T08:10:27.394Z
+date: 2024-09-20T08:41:07.432Z
 tags: 
 editor: markdown
 dateCreated: 2024-09-20T08:10:27.394Z
@@ -60,11 +60,15 @@ admin ALL=(ALL) NOPASSWD:ALL
 
 Now your user `admin` can run `sudo` commands without entering a password each time.
 
+
+![screenshot_2024-09-20_095917.png](/defaults/ssh-key-user/screenshot_2024-09-20_095917.png)
+
 ---
 
 ### 2. **Generate an SSH Key**
 
 SSH keys provide a more secure way to log in to an SSH session compared to using passwords. To generate an SSH key, use the following command:
+
 
 ```bash
 ssh-keygen -t rsa -b 4096 -C "admin"
@@ -75,6 +79,8 @@ ssh-keygen -t rsa -b 4096 -C "admin"
 - `-C "admin"`: Adds a comment to help identify the key.
 
 You can also use **PuTTYgen** if you're using Windows. You can download it from [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) and follow a guide to generate an SSH key using PuTTY (link to tutorial coming soon).
+
+![screenshot_2024-09-20_094437.png](/defaults/ssh-key-user/screenshot_2024-09-20_094437.png)
 
 ---
 
