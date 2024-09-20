@@ -2,7 +2,7 @@
 title: User-SSH-Keys
 description: 
 published: true
-date: 2024-09-20T21:35:05.216Z
+date: 2024-09-20T21:35:20.252Z
 tags: 
 editor: markdown
 dateCreated: 2024-09-20T08:10:27.394Z
@@ -153,7 +153,7 @@ Make the following changes:
 
    ```bash
 	 # uncomment
-   # PubkeyAuthentication yes
+   # PubkeyAuthentication no
    PubkeyAuthentication yes
    ```
 
