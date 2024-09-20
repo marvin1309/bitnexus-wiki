@@ -2,7 +2,7 @@
 title: User-SSH-Keys
 description: 
 published: true
-date: 2024-09-20T13:35:19.155Z
+date: 2024-09-20T13:35:44.227Z
 tags: 
 editor: markdown
 dateCreated: 2024-09-20T08:10:27.394Z
@@ -111,7 +111,7 @@ To allow SSH key-based login for your `admin` user:
 
    ```bash
    mkdir ./.ssh
-	 touch ./.ssh/authorized_keys
+   touch ./.ssh/authorized_keys
    echo "DEIN_SSH_PUBLIC_KEY" >> ~/.ssh/authorized_keys
    ```
 
