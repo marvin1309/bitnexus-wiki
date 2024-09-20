@@ -2,7 +2,7 @@
 title: User-SSH-Keys
 description: 
 published: true
-date: 2024-09-20T13:13:58.550Z
+date: 2024-09-20T13:31:46.902Z
 tags: 
 editor: markdown
 dateCreated: 2024-09-20T08:10:27.394Z
@@ -103,8 +103,13 @@ To allow SSH key-based login for your `admin` user:
    chmod 700 ~/.ssh
    ```
 
-3. Add your SSH public key to the `authorized_keys` file:
 
+
+3. Add your SSH public key to the `authorized_keys` file:
+   ```bash
+   touch ./.ssh/authorized_keys
+   ```
+   
    ```bash
    echo "DEIN_SSH_PUBLIC_KEY" >> ~/.ssh/authorized_keys
    ```
