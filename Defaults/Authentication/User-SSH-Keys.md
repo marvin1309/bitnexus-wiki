@@ -2,7 +2,7 @@
 title: User-SSH-Keys
 description: 
 published: true
-date: 2024-09-20T21:33:56.527Z
+date: 2024-09-20T21:35:05.216Z
 tags: 
 editor: markdown
 dateCreated: 2024-09-20T08:10:27.394Z
@@ -152,6 +152,8 @@ Make the following changes:
 2. Enable public key authentication:
 
    ```bash
+	 # uncomment
+   # PubkeyAuthentication yes
    PubkeyAuthentication yes
    ```
 
