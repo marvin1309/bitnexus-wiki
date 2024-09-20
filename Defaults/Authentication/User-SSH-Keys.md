@@ -2,7 +2,7 @@
 title: User-SSH-Keys
 description: 
 published: true
-date: 2024-09-20T13:35:44.227Z
+date: 2024-09-20T21:33:56.527Z
 tags: 
 editor: markdown
 dateCreated: 2024-09-20T08:10:27.394Z
@@ -110,16 +110,11 @@ To allow SSH key-based login for your `admin` user:
 
 
    ```bash
-   mkdir ./.ssh
-   touch ./.ssh/authorized_keys
-   echo "DEIN_SSH_PUBLIC_KEY" >> ~/.ssh/authorized_keys
-   ```
+   nano ./.ssh/authorized_keys
 
-   For example:
-
-   ```bash
-   echo "ssh-rsa AAAAB3Nza... user@hostname" >> ~/.ssh/authorized_keys
    ```
+	Dein SSH Key einfügen
+
 
 4. Set the appropriate permissions:
 
