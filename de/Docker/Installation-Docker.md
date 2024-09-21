@@ -2,7 +2,7 @@
 title: Installation-Docker
 description: 
 published: true
-date: 2024-09-21T01:48:45.703Z
+date: 2024-09-21T02:14:49.623Z
 tags: 
 editor: markdown
 dateCreated: 2024-09-20T23:48:13.793Z
@@ -16,7 +16,7 @@ Dieses Tutorial beschreibt, wie man Docker, Docker Compose sowie ein Samba-Share
 
 ## Disclaimer für Proxmox LXC Container
 
-Wenn du Docker in einem Proxmox LXC Container installierst, müssen bestimmte Vorbereitungen getroffen werden. Dies wird in einem zukünftigen Tutorial behandelt.
+Wenn du Docker in einem Proxmox LXC Container installierst, müssen bestimmte Vorbereitungen getroffen werden.
 
 ---
 
@@ -26,6 +26,32 @@ Wenn du Docker in einem Proxmox LXC Container installierst, müssen bestimmte Vo
 
 ---
 
+
+## Vorbereitung 1: Erstellung eines LXC Containers auf Proxmox
+
+1. **Erstellen des Containers**:
+   - Der Container muss **privilegiert** erstellt werden.
+
+2. **Anpassen der Features nach der Installation**:
+   - Öffne in der Proxmox-UI die **Optionen** des LXC-Containers und passe die Features wie folgt an:
+     - **NFS** aktivieren
+     - **SMB** aktivieren
+     - **Nesting** aktivieren
+
+3. **Bearbeiten der LXC-Konfigurationsdatei**:
+   - Öffne die Konfigurationsdatei des Containers:
+     ```bash
+     nano /etc/pve/lxc/<container_id>.conf
+     ```
+   - Füge am Ende der Datei folgende Zeile hinzu:
+     ```bash
+     lxc.cap.drop:
+     ```
+
+---
+
+So sollte die Struktur klarer und leichter verständlich sein. Wenn du noch Fragen hast oder weitere Informationen benötigst, lass es mich wissen!
+  
 ## Schritt 1: Verzeichnisstruktur erstellen
 
 Wir beginnen mit dem Anlegen eines Verzeichnisses für alle Docker-Mounts.
@@ -119,6 +145,7 @@ eine Datei erstellen mit Namen docker-compose.yaml
 
 ```
 version: '3'
+
 services:
   hello-world:
     image: hello-world
@@ -133,6 +160,8 @@ docker compose up -d
 
 ```
 
+---
+
 ## Schritt 5: Portainer (optional) installieren
 
 Portainer ist eine grafische Oberfläche zur Verwaltung von Docker-Containern. Es kann wie folgt installiert werden, wenn es sich um die Haupt-Node oder erste Node eines Docker-Clusters handelt:
@@ -144,9 +173,29 @@ docker run -d -p 8000:8000 -p 9443:9443 --name=portainer \
   -v portainer_data:/data portainer/portainer-ce:latest
 ```
 
+### Zugriff auf die Web-UI
+
+Nach der Installation kann die Weboberfläche von Portainer im Browser über die IP-Adresse des Servers erreicht werden. Standardmäßig wird Port **9443** für den Zugriff verwendet.
+
+```bash
+https://<server-ip>:9443
+```
+
+Wenn der Zugriff über Port 9443 nicht funktioniert, stelle sicher, dass:
+1. Der Port in der Firewall freigegeben ist:
+   ```bash
+   sudo ufw allow 9443/tcp
+   ```
+2. Der Docker-Container läuft:
+   ```bash
+   docker ps
+   ```
+
 Weitere Details findest du in der offiziellen Anleitung: [Portainer Installation](https://docs.portainer.io/start/install-ce/server/docker/linux).
 
 ---
+
+Jetzt sollte alles klar verständlich sein, inklusive der Hinweise zur Erreichbarkeit der Web-UI.
 
 ## Schritt 6: Samba installieren und konfigurieren
 
