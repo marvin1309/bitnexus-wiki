@@ -2,7 +2,7 @@
 title: Adguard Deployment
 description: 
 published: true
-date: 2024-09-21T10:57:16.271Z
+date: 2024-09-21T11:00:56.809Z
 tags: 
 editor: markdown
 dateCreated: 2024-09-21T10:57:16.271Z
@@ -267,4 +267,4 @@ By following this guide, you should have a fully functional AdGuard Home instanc
 For more detailed Docker commands and best practices, refer to:
 
 - [Docker Installation Guide](/Deployments/Docker/Installation-Docker)
-- [Docker Cheat Sheet](/path/to/docker-cheat-sheet)
+- [Docker Cheat Sheet](/en/Deployments/Docker/Docker-Cheatsheet)
