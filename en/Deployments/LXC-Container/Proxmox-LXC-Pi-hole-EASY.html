@@ -1,0 +1,130 @@
+<!--
+title: Proxmox-LXC-Pi-hole-EASY
+description: 
+published: true
+date: 2024-09-19T23:15:33.038Z
+tags: 
+editor: ckeditor
+dateCreated: 2024-09-19T23:10:45.385Z
+-->
+
+<h1>PiHole Installation in einem LXC Container auf einem Proxmox Server</h1>
+<p>In diesem Tutorial lernst du, wie du PiHole in einem LXC Container auf einem Proxmox Server installierst. Es wird vorausgesetzt, dass du bereits Screenshots der Installation gemacht hast und der Proxmox Server bereits läuft.</p>
+<h2>Schritt 1: Herunterladen des Debian 12 LXC Templates</h2>
+<ol>
+  <li>Öffne die Proxmox Web GUI.</li>
+  <li>Gehe zu <strong>local storage</strong> unter deiner Proxmox Node.</li>
+  <li>Wähle den Reiter <strong>CT Templates</strong> und lade das Debian 12 Template herunter.</li>
+</ol>
+<figure class="image image_resized" style="width:55.92%;"><img src="/proxmox/lxc/screenshot_2024-09-19_190901.png" alt="screenshot_2024-09-19_190901.png"></figure>
+<figure class="image image_resized" style="width:55.76%;"><img src="/proxmox/lxc/screenshot_2024-09-19_190959.png" alt="screenshot_2024-09-19_190959.png"></figure>
+<h2>Schritt 2: Erstellen des LXC Containers</h2>
+<ol>
+  <li>Rechtsklicke auf deine Proxmox Node und wähle <strong>Create CT</strong>.</li>
+  <li>Gib in der <strong>General</strong> Ansicht die folgenden Informationen ein:<ul>
+      <li><strong>CT ID</strong>: (eine eindeutige ID für den Container)</li>
+      <li><strong>Hostname</strong>: pihole</li>
+      <li><strong>Password</strong>: Definiere ein Passwort für den Container</li>
+    </ul>
+  </li>
+</ol>
+<figure class="image image_resized" style="width:54.49%;"><img src="/proxmox/lxc/screenshot_2024-09-19_191118.png" alt="screenshot_2024-09-19_191118.png"></figure>
+<ol>
+  <li>In der <strong>Template</strong> Ansicht wähle das heruntergeladene <strong>Debian 12</strong> Template auf <strong>local</strong> aus.</li>
+</ol>
+<figure class="image"><img src="/proxmox/lxc/screenshot_2024-09-19_191147.png" alt="screenshot_2024-09-19_191147.png"></figure>
+<ol>
+  <li>In der <strong>Disks</strong> Ansicht:<ul>
+      <li><strong>Disk Storage</strong>: Wähle <strong>local-lvm</strong> aus.</li>
+      <li><strong>Disk Size</strong>: Setze die Größe auf 10GB.</li>
+    </ul>
+  </li>
+</ol>
+<figure class="image"><img src="/proxmox/lxc/screenshot_2024-09-19_191207.png" alt="screenshot_2024-09-19_191207.png"></figure>
+<ol>
+  <li>In der <strong>CPU</strong> Ansicht:<ul>
+      <li><strong>CPU Cores</strong>: Wähle 1 Kern.</li>
+    </ul>
+  </li>
+</ol>
+<figure class="image"><img src="/proxmox/lxc/screenshot_2024-09-19_191224.png" alt="screenshot_2024-09-19_191224.png"></figure>
+<ol>
+  <li>In der <strong>Memory</strong> Ansicht:<ul>
+      <li><strong>Memory (RAM)</strong>: Setze den Wert auf 1024 MB.</li>
+    </ul>
+  </li>
+</ol>
+<h2>Schritt 3: Netzwerkeinstellungen konfigurieren</h2>
+<ol>
+  <li>In der <strong>Network</strong> Ansicht wähle:</li>
+</ol>
+<p><strong>IPv4</strong>: Setze eine statische IP, z.B. <code>10.1.100.190/24</code>.</p>
+<ul>
+  <li><strong>Hinweis</strong>: Wähle eine IP-Adresse außerhalb des DHCP-Ranges deines Routers.<br>&nbsp;</li>
+</ul>
+<figure class="image"><img src="/proxmox/lxc/screenshot_2024-09-19_191732.png" alt="screenshot_2024-09-19_191732.png"></figure>
+<p><strong>Bridge</strong>: Wähle <strong>vmbr0</strong> (Standardbridge).</p>
+<figure class="image"><img src="/proxmox/lxc/screenshot_2024-09-19_192742.png" alt="screenshot_2024-09-19_192742.png"></figure>
+<ol>
+  <li>Optional: In der <strong>DNS</strong> Ansicht kannst du einen <strong>DNS Server</strong> eintragen, z.B. <code>8.8.8.8</code>. Später kannst du den Upstream-DNS-Server in PiHole konfigurieren.</li>
+</ol>
+<figure class="image image_resized" style="width:53.99%;"><img src="/proxmox/lxc/screenshot_2024-09-19_191358.png" alt="screenshot_2024-09-19_191358.png"></figure>
+<figure class="image image_resized" style="width:53.85%;"><img src="/proxmox/lxc/screenshot_2024-09-19_191420.png" alt="screenshot_2024-09-19_191420.png"></figure>
+<ol>
+  <li>Klicke auf <strong>Finish</strong> und erstelle den Container.</li>
+</ol>
+<h2>Schritt 4: Starten und Einrichten des Containers</h2>
+<p>Starte den erstellten LXC Container.</p>
+<p>Öffne die Shell des Containers.</p>
+<figure class="image image_resized" style="width:53.71%;"><img src="/proxmox/lxc/screenshot_2024-09-19_191506.png" alt="screenshot_2024-09-19_191506.png"></figure>
+<p>Führe folgende Befehle aus, um den Container zu aktualisieren und <code>curl</code> zu installieren:</p>
+<pre><code class="language-plaintext">apt update &amp;&amp; apt upgrade -y &amp;&amp; apt install curl</code></pre>
+<h2>Schritt 5: Installation von PiHole</h2>
+<ol>
+  <li>Besuche die <a href="https://docs.pi-hole.net/main/basic-install/">offizielle Installationsseite von PiHole</a>.</li>
+</ol>
+<figure class="image image_resized" style="width:53.58%;"><img src="/proxmox/lxc/screenshot_2024-09-19_191529.png" alt="screenshot_2024-09-19_191529.png"></figure>
+<p>Kopiere den aktuellen Installationsbefehl und führe ihn im LXC Container aus:</p>
+<pre><code class="language-plaintext">curl -sSL https://install.pi-hole.net | bash</code></pre>
+<figure class="image image_resized" style="width:53.59%;"><img src="/proxmox/lxc/screenshot_2024-09-19_191551.png" alt="screenshot_2024-09-19_191551.png"></figure>
+<h2>Schritt 6: Konfiguration während der Installation</h2>
+<p>Während der Installation wirst du durch mehrere Konfigurationsschritte geführt:</p>
+<ol>
+  <li><strong>Netzwerkadapter auswählen</strong>: Falls du mehrere Netzwerkadapter hast, wähle den richtigen.<br>&nbsp;</li>
+</ol>
+<figure class="image image_resized" style="width:41.47%;"><img src="/proxmox/lxc/screenshot_2024-09-19_205223.png" alt="screenshot_2024-09-19_205223.png"></figure>
+<ol>
+  <li><strong>Upstream DNS</strong>: Wähle den Upstream DNS-Server (z.B. Google <code>8.8.8.8</code>).<br>&nbsp;</li>
+</ol>
+<figure class="image"><img src="/proxmox/lxc/screenshot_2024-09-19_205311.png" alt="screenshot_2024-09-19_205311.png"></figure>
+<ol>
+  <li><strong>Blocklists</strong>: Installiere die Standard Blockliste von Steven Black.<br>&nbsp;</li>
+</ol>
+<figure class="image"><img src="/proxmox/lxc/screenshot_2024-09-19_205327.png" alt="screenshot_2024-09-19_205327.png"></figure>
+<ol>
+  <li><strong>Admin Interface</strong>: Installiere das Admin Interface.<br>&nbsp;</li>
+</ol>
+<figure class="image"><img src="/proxmox/lxc/screenshot_2024-09-19_205353.png" alt="screenshot_2024-09-19_205353.png"></figure>
+<ol>
+  <li><strong>Webserver</strong>: Installiere den Webserver.<br>&nbsp;</li>
+</ol>
+<figure class="image image_resized" style="width:42.92%;"><img src="/proxmox/lxc/screenshot_2024-09-19_205405.png" alt="screenshot_2024-09-19_205405.png"></figure>
+<ol>
+  <li><strong>Query Logging</strong>: Aktiviere das Query Logging.<br>&nbsp;</li>
+</ol>
+<figure class="image image_resized" style="width:42.82%;"><img src="/proxmox/lxc/screenshot_2024-09-19_205418.png" alt="screenshot_2024-09-19_205418.png"></figure>
+<ol>
+  <li><strong>Anzeigemodus für Logs</strong>: Wähle <strong>Show Everything</strong> (zeigt alle Logs an).<br>&nbsp;</li>
+</ol>
+<figure class="image image_resized" style="width:42.57%;"><img src="/proxmox/lxc/screenshot_2024-09-19_205432.png" alt="screenshot_2024-09-19_205432.png"></figure>
+<p>Nach Abschluss der Installation wird dir ein Passwort für das Admin Interface angezeigt. Du kannst dieses später mit dem folgenden Befehl ändern:</p>
+<figure class="image image_resized" style="width:42.77%;"><img src="/proxmox/lxc/screenshot_2024-09-20_004009.png" alt="screenshot_2024-09-20_004009.png"></figure>
+<pre><code class="language-plaintext">pihole -a -p</code></pre>
+<h2>Schritt 7: Zugriff auf das PiHole Admin Interface</h2>
+<p>Das Admin Interface von PiHole erreichst du unter:</p>
+<pre><code class="language-plaintext">http://10.1.100.190/admin</code></pre>
+<figure class="image image_resized" style="width:42.97%;"><img src="/proxmox/lxc/screenshot_2024-09-20_004225.png" alt="screenshot_2024-09-20_004225.png"></figure>
+<h2>Schritt 8: DNS-Server im Router konfigurieren</h2>
+<p>Damit PiHole als DNS-Server für dein Netzwerk fungiert, ändere die DNS-Servereinstellungen in deinem Router. Setze die statische IP deines PiHole Containers als DNS-Server für den DHCP-Bereich deines Netzwerks.</p>
+<pre><code class="language-plaintext">10.1.100.190</code></pre>
+<p>Damit ist die Installation von PiHole in einem LXC Container auf einem Proxmox Server abgeschlossen!<br>``</p>
