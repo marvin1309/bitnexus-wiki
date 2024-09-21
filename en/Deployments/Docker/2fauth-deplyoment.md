@@ -2,7 +2,7 @@
 title: 2fAuth Deployment
 description: 
 published: true
-date: 2024-09-21T08:59:52.881Z
+date: 2024-09-21T09:00:58.029Z
 tags: 
 editor: markdown
 dateCreated: 2024-09-21T08:57:47.936Z
@@ -26,7 +26,7 @@ If you haven't already, install Docker and Docker Compose on your system. You ca
 - [Docker Engine Installation](https://docs.docker.com/engine/install/)
 - [Docker Compose Installation](https://docs.docker.com/compose/install/)
 
-Or use my Guide at [Installation-Docker](/Deployments/Docker/Installation-Docker)
+or use my Guide at [Installation-Docker](/Deployments/Docker/Installation-Docker) `recommended`
 
 ## Step 2: Set Up Directory Structure
 
