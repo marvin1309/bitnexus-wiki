@@ -2,7 +2,7 @@
 title: Home-Assistent Deployment
 description: 
 published: true
-date: 2024-09-21T11:06:39.810Z
+date: 2024-09-21T11:07:12.536Z
 tags: 
 editor: markdown
 dateCreated: 2024-09-21T11:06:17.682Z
@@ -279,5 +279,5 @@ By following this guide, you should have a fully functional Home Assistant insta
 
 For more detailed Docker commands and best practices, refer to:
 
-- [Docker Installation Guide](#installation-guide-for-scrypted-with-docker-compose)
-- [Docker Cheat Sheet](#docker-cheat-sheet-essential-commands-tips-and-tricks)
+- [Docker Installation Guide](/Deployments/Docker/Installation-Docker)
+- [Docker Cheat Sheet](/en/Deployments/Docker/Docker-Cheatsheet)
