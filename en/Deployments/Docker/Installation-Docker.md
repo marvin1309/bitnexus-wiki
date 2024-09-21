@@ -2,7 +2,7 @@
 title: 01 Docker Installation
 description: 
 published: true
-date: 2024-09-21T09:38:56.828Z
+date: 2024-09-21T11:15:30.107Z
 tags: 
 editor: markdown
 dateCreated: 2024-09-21T07:51:59.059Z
@@ -259,8 +259,8 @@ Füge am Ende der Datei folgenden Abschnitt hinzu:
    browseable = yes
    read only = no
    writable = yes
-   force user = storagesvc
-   force group = storagesvc
+   force user = storagesvc   #issues? -> change to root
+   force group = storagesvc  #issues? -> change to root
    create mask = 7777
    directory mask = 7777
 ```
