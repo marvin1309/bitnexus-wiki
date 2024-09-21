@@ -2,10 +2,10 @@
 title: Nextcloud Deployment
 description: 
 published: true
-date: 2024-09-21T07:41:50.768Z
+date: 2024-09-21T07:41:42.495Z
 tags: 
 editor: markdown
-dateCreated: 2024-09-21T06:59:07.899Z
+dateCreated: 2024-07-15T21:22:40.113Z
 ---
 
 # Header
