@@ -2,7 +2,7 @@
 title: 01 Docker Installation
 description: 
 published: true
-date: 2024-09-21T11:15:36.393Z
+date: 2024-09-21T11:26:53.178Z
 tags: 
 editor: markdown
 dateCreated: 2024-09-21T07:51:59.059Z
@@ -43,16 +43,43 @@ Wenn du Docker in einem Proxmox LXC Container installierst, müssen bestimmte Vo
      ```bash
      nano /etc/pve/lxc/<container_id>.conf
      ```
-   - Füge am Ende der Datei folgende Zeile hinzu:
-     ```bash
-     lxc.cap.drop:
+   - Füge am Ende der Datei folgende Zeilen hinzu:
 
-     ```
+    ---
 
----
+    #### PVE 7.x
 
-So sollte die Struktur klarer und leichter verständlich sein. Wenn du noch Fragen hast oder weitere Informationen benötigst, lass es mich wissen!
-  
+    ##### Debian with Nesting Enabled (Unprivileged Container: No)
+
+    ```ini
+    lxc.apparmor.profile: unconfined
+    lxc.cap.drop:
+    ```
+
+    #### PVE 6.x
+
+    ##### Debian with Nesting Enabled (Unprivileged Container: No)
+
+    ```ini
+    lxc.apparmor.profile: unconfined
+    lxc.cgroup.devices.allow: a
+    lxc.cap.drop:
+    lxc.mount.auto:
+    ```
+
+    ##### CentOS with Nesting and FUSE Enabled (Unprivileged Container: No)
+
+    ```ini
+    lxc.cgroup.devices.allow: a
+    lxc.mount.auto: sys
+    lxc.cap.drop:
+    ```
+    ---
+    **Note**: Warnings are only valid if you do not use ZFS, which involves other settings.
+    ---
+
+
+ 
 ## Schritt 1: Verzeichnisstruktur erstellen
 
 Wir beginnen mit dem Anlegen eines Verzeichnisses für alle Docker-Mounts.
@@ -85,7 +112,7 @@ Wir installieren Docker gemäß der offiziellen Anleitung von Docker. Führe die
 ### Docker installieren (Debian-basierte Systeme)
 ```bash
 sudo apt update
-sudo apt install -y ca-certificates curl gnupg lsb-release
+sudo apt install -y ca-certificates curl gnupg lsb-release apt-transport-https
 
 # Docker's offizieller GPG-Schlüssel hinzufügen
 sudo mkdir -m 0755 -p /etc/apt/keyrings
