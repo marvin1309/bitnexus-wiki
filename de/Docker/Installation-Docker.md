@@ -2,7 +2,7 @@
 title: Installation-Docker
 description: 
 published: true
-date: 2024-09-21T01:14:18.766Z
+date: 2024-09-21T01:45:52.432Z
 tags: 
 editor: markdown
 dateCreated: 2024-09-20T23:48:13.793Z
@@ -112,6 +112,18 @@ sudo apt install docker-compose-plugin
 ```
 
 ---
+
+Zum testen hier eine Hello World Docker Container
+
+```
+version: '3'
+
+services:
+  hello-world:
+    image: hello-world
+
+
+```
 
 ## Schritt 5: Portainer (optional) installieren
 
