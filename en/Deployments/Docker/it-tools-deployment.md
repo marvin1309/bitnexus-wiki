@@ -2,7 +2,7 @@
 title: IT-Tools Deployment
 description: 
 published: true
-date: 2024-09-21T09:29:49.886Z
+date: 2024-09-21T09:31:05.905Z
 tags: 
 editor: markdown
 dateCreated: 2024-09-21T09:29:49.886Z
@@ -32,8 +32,8 @@ or use my Guide at [Installation-Docker](/Deployments/Docker/Installation-Docker
 Create a directory to store your IT-Tools configuration and data (optional, since this container doesn't require persistent storage):
 
 ```bash
-mkdir -p ~/docker/it-tools
-cd ~/docker/it-tools
+mkdir -p /export/docker/it-tools
+cd /export/docker/it-tools
 ```
 
 ## Step 3: Prepare the `docker-compose.yml` File
