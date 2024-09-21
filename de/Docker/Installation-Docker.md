@@ -2,7 +2,7 @@
 title: Installation-Docker
 description: 
 published: true
-date: 2024-09-20T23:48:13.793Z
+date: 2024-09-21T01:14:18.766Z
 tags: 
 editor: markdown
 dateCreated: 2024-09-20T23:48:13.793Z
@@ -11,6 +11,14 @@ dateCreated: 2024-09-20T23:48:13.793Z
 # Tutorial zur Installation von Docker, Docker Compose und Samba mit einem speziellen Export-Verzeichnis
 
 Dieses Tutorial beschreibt, wie man Docker, Docker Compose sowie ein Samba-Share auf einem Debian-basierten System installiert. Alle Docker-Container sollen ihre Daten in einem `/export/docker`-Verzeichnis speichern, das per Samba freigegeben wird. Zudem wird ein Benutzer für die Verwaltung des Speichers erstellt.
+
+---
+
+## Disclaimer für Proxmox LXC Container
+
+Wenn du Docker in einem Proxmox LXC Container installierst, müssen bestimmte Vorbereitungen getroffen werden. Dies wird in einem zukünftigen Tutorial behandelt.
+
+---
 
 ## Voraussetzungen
 - Ein Debian-basiertes System (z.B. Debian, Ubuntu, Proxmox LXC Container)
@@ -181,12 +189,6 @@ Weitere Schritte wie die Einrichtung eines VSCode-Servers, der auf die Samba-Sha
 - Docker Installationsseite: [Docker Installationsanleitung](https://docs.docker.com/engine/install/debian/)
 - Portainer Installationsseite: [Portainer Installationsanleitung](https://docs.portainer.io/start/install-ce/server/docker/linux)
 - Credits: [Setup und Install Docker in einem Proxmox LXC Container](https://thehomelab.wiki/books/promox-ve/page/setup-and-install-docker-in-a-promox-lxc-container)
-
----
-
-## Disclaimer für Proxmox LXC Container
-
-Wenn du Docker in einem Proxmox LXC Container installierst, müssen bestimmte Vorbereitungen getroffen werden. Dies wird in einem zukünftigen Tutorial behandelt.
 
 ---
 
