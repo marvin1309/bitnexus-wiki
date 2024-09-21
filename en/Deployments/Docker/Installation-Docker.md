@@ -2,10 +2,10 @@
 title: Installation-Docker
 description: 
 published: true
-date: 2024-09-21T02:24:45.749Z
+date: 2024-09-21T09:29:29.731Z
 tags: 
 editor: markdown
-dateCreated: 2024-09-20T23:48:13.793Z
+dateCreated: 2024-09-21T07:51:59.059Z
 ---
 
 # Tutorial zur Installation von Docker, Docker Compose und Samba mit einem speziellen Export-Verzeichnis
@@ -46,6 +46,7 @@ Wenn du Docker in einem Proxmox LXC Container installierst, müssen bestimmte Vo
    - Füge am Ende der Datei folgende Zeile hinzu:
      ```bash
      lxc.cap.drop:
+
      ```
 
 ---
