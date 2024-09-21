@@ -2,7 +2,7 @@
 title: 2fAuth Deployment
 description: 
 published: true
-date: 2024-09-21T09:01:52.767Z
+date: 2024-09-21T09:28:15.205Z
 tags: 
 editor: markdown
 dateCreated: 2024-09-21T08:57:47.936Z
