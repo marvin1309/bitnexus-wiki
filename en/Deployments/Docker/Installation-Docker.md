@@ -2,7 +2,7 @@
 title: 01 Docker Installation
 description: 
 published: true
-date: 2024-09-21T11:15:30.107Z
+date: 2024-09-21T11:15:36.393Z
 tags: 
 editor: markdown
 dateCreated: 2024-09-21T07:51:59.059Z
