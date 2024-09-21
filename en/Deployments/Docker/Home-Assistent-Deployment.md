@@ -2,7 +2,7 @@
 title: Home-Assistent Deployment
 description: 
 published: true
-date: 2024-09-21T11:06:17.682Z
+date: 2024-09-21T11:06:39.810Z
 tags: 
 editor: markdown
 dateCreated: 2024-09-21T11:06:17.682Z
