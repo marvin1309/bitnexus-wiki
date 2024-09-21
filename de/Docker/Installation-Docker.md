@@ -2,7 +2,7 @@
 title: Installation-Docker
 description: 
 published: true
-date: 2024-09-21T01:47:54.852Z
+date: 2024-09-21T01:48:45.703Z
 tags: 
 editor: markdown
 dateCreated: 2024-09-20T23:48:13.793Z
@@ -119,7 +119,6 @@ eine Datei erstellen mit Namen docker-compose.yaml
 
 ```
 version: '3'
-
 services:
   hello-world:
     image: hello-world
