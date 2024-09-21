@@ -2,7 +2,7 @@
 title: Installation-Docker
 description: 
 published: true
-date: 2024-09-21T02:14:49.623Z
+date: 2024-09-21T02:24:45.749Z
 tags: 
 editor: markdown
 dateCreated: 2024-09-20T23:48:13.793Z
@@ -99,29 +99,64 @@ sudo apt update
 sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
-### Docker-Verzeichnis ändern
-Um Docker so zu konfigurieren, dass es seine Daten im Verzeichnis `/export/docker/docker-data` speichert, bearbeiten wir die Datei `daemon.json`.
-
-```bash
-sudo mkdir -p /export/docker/docker-data
-sudo nano /etc/docker/daemon.json
-```
-
-Füge den folgenden Inhalt hinzu:
-
-```json
-{
-  "data-root": "/export/docker/docker-data"
-}
-```
-
-Speichere die Datei und starte Docker neu:
-
-```bash
-sudo systemctl restart docker
-```
+Hier ist der erweiterte Abschnitt mit einer Anleitung, wie man das Docker-Verzeichnis wechselt, inklusive der Umstellung und dem Kopieren der bestehenden Daten, ohne Datenverlust:
 
 ---
+
+### Docker-Verzeichnis ändern
+
+Wenn du Docker so konfigurieren möchtest, dass es seine Daten in einem anderen Verzeichnis speichert, zum Beispiel im Verzeichnis `/export/docker/docker-data`, ( für Zukünftige Tutorials relevant ) kannst du dies folgendermaßen vornehmen:
+
+1. **Erstelle das neue Verzeichnis**:
+   ```bash
+   sudo mkdir -p /export/docker/docker-data
+   ```
+
+2. **Bearbeite die `daemon.json`-Datei**:
+   - Öffne die Konfigurationsdatei von Docker:
+     ```bash
+     sudo nano /etc/docker/daemon.json
+     ```
+   - Füge den folgenden Inhalt hinzu (oder passe den bestehenden Eintrag an):
+     ```json
+     {
+       "data-root": "/export/docker/docker-data"
+     }
+     ```
+   - Speichere die Datei.
+
+3. **Kopiere die existierenden Docker-Daten in das neue Verzeichnis**:
+   - Um Datenverlust zu vermeiden, kopierst du das bestehende Verzeichnis (standardmäßig unter `/var/lib/docker/`) in das neue Verzeichnis. Verwende dafür den folgenden `cp`-Befehl:
+     ```bash
+     sudo systemctl stop docker
+     sudo cp -a /var/lib/docker/* /export/docker/docker-data/
+     ```
+     - Der Parameter `-a` sorgt dafür, dass alle Rechte, Besitzer und Timestamps der Dateien erhalten bleiben.
+     - **Wichtig:** Docker muss gestoppt sein, um Datenbeschädigungen während des Kopierens zu vermeiden.
+
+4. **Docker neu starten**:
+   - Sobald die Daten kopiert sind, kannst du Docker mit dem neuen Verzeichnis starten:
+     ```bash
+     sudo systemctl start docker
+     ```
+
+5. **Überprüfen der neuen Konfiguration**:
+   - Stelle sicher, dass Docker das neue Verzeichnis korrekt verwendet:
+     ```bash
+     docker info | grep "Docker Root Dir"
+     ```
+   - Die Ausgabe sollte das neue Verzeichnis, z.B. `/export/docker/docker-data`, anzeigen.
+
+### Wichtige Hinweise:
+- Achte darauf, dass genügend Speicherplatz im neuen Verzeichnis verfügbar ist.
+- Du kannst das alte Verzeichnis (`/var/lib/docker/`) nach erfolgreichem Testen der neuen Konfiguration löschen, um Speicherplatz freizugeben:
+   ```bash
+   sudo rm -rf /var/lib/docker/
+   ```
+
+---
+
+Dieser Abschnitt führt dich durch den gesamten Prozess: vom Ändern des Docker-Verzeichnisses bis zum Kopieren der bestehenden Daten ohne Datenverlust. Wenn du noch zusätzliche Schritte brauchst oder Anpassungen möchtest, lass es mich wissen!
 
 ## Schritt 4: Docker Compose installieren
 
