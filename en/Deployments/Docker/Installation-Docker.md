@@ -2,7 +2,7 @@
 title: 01 Docker Installation
 description: 
 published: true
-date: 2024-09-21T11:29:55.978Z
+date: 2024-09-21T11:30:55.609Z
 tags: 
 editor: markdown
 dateCreated: 2024-09-21T07:51:59.059Z
@@ -321,7 +321,7 @@ Weitere Schritte wie die Einrichtung eines VSCode-Servers, der auf die Samba-Sha
 - Docker Installationsseite: [Docker Installationsanleitung](https://docs.docker.com/engine/install/debian/)
 - Portainer Installationsseite: [Portainer Installationsanleitung](https://docs.portainer.io/start/install-ce/server/docker/linux)
 - Credits: 
-    - [Setup und Install Docker in einem Proxmox LXC Container](https://thehomelab.wiki/books/promox-ve/page/setup-and-install-docker-in-a-promox-lxc-container)
+    - [Setup und Install Docker in einem Proxmox LXC Container](https://thehomelab.wiki/books/promox-ve/page/setup-and-install-docker-in-a-promox-7-lxc-conainer)
     - [Proxmox Forum](https://forum.proxmox.com/threads/run-docker-inside-lxc.112004/)
 
 ---
