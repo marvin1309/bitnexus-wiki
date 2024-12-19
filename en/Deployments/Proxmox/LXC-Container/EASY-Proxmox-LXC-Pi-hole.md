@@ -1,5 +1,5 @@
 ---
-title: Proxmox-LXC-Pi-hole-EASY
+title: EASY - Deployment - Proxmox-LXC-Pi-hole
 description: 
 published: true
 date: 2024-09-19T23:11:40.104Z
