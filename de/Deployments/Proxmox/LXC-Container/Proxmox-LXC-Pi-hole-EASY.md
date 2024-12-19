@@ -8,7 +8,7 @@ editor: markdown
 dateCreated: 2024-09-19T23:10:45.385Z
 ---
 
-# PiHole Installation in einem LXC Container auf einem Proxmox Server
+# PiHole Installation in einem LXC Container auf einem Proxmox Server Easy-WAY
 
 In diesem Tutorial lernst du, wie du PiHole in einem LXC Container auf einem Proxmox Server installierst. Es wird vorausgesetzt, dass du bereits Screenshots der Installation gemacht hast und der Proxmox Server bereits läuft.
 
