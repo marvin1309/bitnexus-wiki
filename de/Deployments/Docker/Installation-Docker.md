@@ -17,6 +17,7 @@ Dieses Tutorial beschreibt, wie man Docker, Docker Compose sowie ein Samba-Share
 ## Disclaimer für Proxmox LXC Container
 
 Wenn du Docker in einem Proxmox LXC Container installierst, müssen bestimmte Vorbereitungen getroffen werden.
+SCHAUEN OB ES KLAPPPT
 
 ---
 
